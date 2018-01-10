@@ -1,0 +1,22 @@
+.App--content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.App--header {
+    background-color: #222;
+    height: 60px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.App--content-item-header {
+    font-size: 1.5em;
+}
+
+.App--intro {
+    font-size: large;
+}
