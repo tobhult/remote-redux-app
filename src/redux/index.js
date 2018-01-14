@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { remoteAction, remoteCombineReducers } from './remote';
 
 const foo = (state = { value: 0, }, action) => {
     switch (action.type) {
@@ -9,7 +9,7 @@ const foo = (state = { value: 0, }, action) => {
     }
 };
 
-const bar = (state = { messages: [] }, action) => {
+const shared = (state = { messages: [] }, action) => {
     switch (action.type) {
         case 'SAY':
             return { messages: [...state.messages, action.message] };
@@ -18,12 +18,9 @@ const bar = (state = { messages: [] }, action) => {
     }
 };
 
-export const reducer = combineReducers({
-    foo,
-    bar,
-});
+export const reducer = remoteCombineReducers({ foo }, { shared });
 
-export const say = (message) => ({
+export const say = (message) => remoteAction({
     type: 'SAY', message,
 });
 

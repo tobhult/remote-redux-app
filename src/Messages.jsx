@@ -30,7 +30,7 @@ Messages.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
-    messages: state.bar.messages,
+    messages: state.shared.messages,
 });
 
 const mapDispatchToProps = {

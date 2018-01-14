@@ -9,19 +9,15 @@ class App extends Component {
         return (
             <div className="App">
                 <header className="App--header">
-                    <h1 className="App--title">Local model</h1>
+                    <h1 className="App--title">Mixed local and shared model</h1>
                 </header>
                 <div className="App--content">
                     <div className="App--content-item">
-                        <p className="App--content-item-header">
-                            Add
-                        </p>
+                        <p className="App--content-item-header">Add</p>
                         <Adder />
                     </div>
                     <div className="App--content-item">
-                        <p className="App--content-item-header">
-                            Messages
-                        </p>
+                        <p className="App--content-item-header">Messages</p>
                         <Messages />
                     </div>
                 </div>

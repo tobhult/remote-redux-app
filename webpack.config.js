@@ -15,7 +15,9 @@ const jsRule = {
             loader: 'babel-loader',
             options: {
                 presets: [ 'env', 'react' ],
+                plugins: [ 'transform-object-rest-spread' ],
                 cacheDirectory: true,
+                sourceMap: true,
             },
         }
     ]
