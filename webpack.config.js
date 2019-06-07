@@ -1,10 +1,7 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const pathTo = (dir) => path.join(__dirname, dir);
-const extractLess = new ExtractTextPlugin({
-    filename: 'app.css',
-});
 const nodeExternals = require('webpack-node-externals');
 
 const jsRule = {
@@ -14,8 +11,8 @@ const jsRule = {
         {
             loader: 'babel-loader',
             options: {
-                presets: [ 'env', 'react' ],
-                plugins: [ 'transform-object-rest-spread' ],
+                presets: [ '@babel/preset-env', '@babel/preset-react' ],
+                plugins: [ '@babel/plugin-proposal-object-rest-spread' ],
                 cacheDirectory: true,
                 sourceMap: true,
             },
@@ -40,22 +37,27 @@ module.exports = [ {
             jsRule,
             {
                 test: /\.css/,
-                use: extractLess.extract({
-                    use: [{
+                
+                use: [
+                    MiniCssExtractPlugin.loader, 
+                    {
                         loader: 'css-loader',
                         options: { importLoaders: 2, sourceMap: true },
-                    }, {
+                    }, 
+                    {
                         loader: 'less-loader',
                         options: {
                             sourceMap: true,
                         },
-                    }],
-                }),
+                    }
+                ],
             },
         ]
     },
     plugins: [
-        extractLess,
+        new MiniCssExtractPlugin({
+            filename: 'app.css',
+        }),
     ]
 },
     {
